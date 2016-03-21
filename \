@@ -1,7 +1,7 @@
 
 var svg = d3.select("body").append("svg")
-  .attr('width', 2400)
-  .attr('height', 1000)
+  .attr('width', 800)
+  .attr('height', 800)
 
 
 function update(data, color) {
@@ -26,37 +26,30 @@ function update(data, color) {
   rects.exit().remove()
 }
 
-update(getRandomData(300,100))
+update(data1)
 cycle1()
 
 function cycle1() {
   var timeout = setTimeout(function() {
-    update(getRandomData(300,80), getRandomColor())    
+    update(getRandomData(100,100), 'green')    
     cycle2()
   }, 1200)
 }
 
 function cycle2() {
   var timeout = setTimeout(function() {
-    update(getRandomData(300,80), getRandomColor())    
+    update(getRandomData(100,100), 'purple')    
     cycle1()
   }, 1200)
 }
 
-function getRandomData(size, max) {
-  var array = []
 
-  for(var x = 0; x < size ; x++) {
-    array[x] = Number(Math.random() * max)
-  }
+getRandomData(size, max) {
+  var array = [size]
+  array.forEach(function(item) {
+    return (int) max * Math.random()    
+  })
 
   return array
 }
 
-function getRandomColor() {
-  var r = Number(Math.random() * 255) 
-  var g = Number(Math.random() * 255)
-  var b = Number(Math.random() * 255)
-
-  return "rgb(" + r + ',' + g + ',' + b + ')'
-}
